@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Nama Anda</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 140px 40px 60px 40px; /* Padding atas agar tidak tertutup header */
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .profile-image {
+            flex: 1;
+            max-width: 300px; /* Batasi lebar gambar profil */
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h1 {
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        /* Media Query untuk tampilan mobile */
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                padding-top: 120px;
+                gap: 30px;
+            }
+            .profile-image {
+                max-width: 100%; /* Gambar memenuhi lebar di mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">FZ</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Work</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle">Menu</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="profile-image">
+                <img src="images/foto7.jpg" alt="Fakhri Adillah Alzaki">
+            </div>
+            <div class="about-text">
+                <h1>Tentang Saya</h1>
+                <p>
+                    Selamat datang di portofolio saya. Saya adalah seorang siswa yang tinggal di kota palembang, dengan kesenangan saya dalam matematika
+                </p>
+                <p>
+               
+                    Silakan jelajahi karya-karya saya di halaman 'Work'. Jika Anda tertarik untuk berkolaborasi atau memiliki pertanyaan, jangan ragu untuk menghubungi saya melalui halaman 'Contact'.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Fakhri. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
