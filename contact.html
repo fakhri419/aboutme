@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="id"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Fakhri Adillah</title>
+    <title>Kontak | Fakhri Adillah</title> <meta name="description" content="Hubungi Fakhri Adillah untuk kolaborasi, proyek, atau pertanyaan. Kirim pesan melalui formulir kontak atau email.">
     <link rel="stylesheet" href="style.css">
     <style>
         .contact-section {
@@ -25,13 +24,18 @@
             margin-bottom: 40px;
             line-height: 1.7;
         }
+        
+        /* Penyesuaian kecil untuk info kontak */
+        .contact-info-wrapper {
+            margin-bottom: 60px;
+        }
 
         .contact-info a {
             font-size: 1.2em;
             color: #111;
             text-decoration: none;
             display: inline-block;
-            margin: 0 20px;
+            margin: 0 15px;
             padding-bottom: 5px;
             border-bottom: 2px solid transparent;
             transition: border-bottom-color 0.3s;
@@ -41,18 +45,42 @@
             border-bottom-color: #333;
         }
         
-        /* Opsi: Formulir Kontak */
+        /* Styling untuk form yang lebih aksesibel */
         .contact-form {
-            margin-top: 60px;
             text-align: left;
+        }
+        
+        .contact-form fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .contact-form legend {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
         }
         
         .contact-form input,
         .contact-form textarea {
             width: 100%;
             padding: 15px;
-            margin-bottom: 20px;
             border: 1px solid #ccc;
+            border-radius: 5px;
             font-family: inherit;
             font-size: 1em;
             box-sizing: border-box;
@@ -65,6 +93,7 @@
             padding: 15px 30px;
             font-size: 1em;
             cursor: pointer;
+            border-radius: 5px;
             transition: background-color 0.3s;
         }
         
@@ -91,7 +120,7 @@
             <a href="index.html" class="logo">FZ</a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Work</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
@@ -102,30 +131,54 @@
 
     <main>
         <section class="contact-section">
-            <h1>KIRIM PESAN</h1>
+            <h1>Hubungi Saya</h1>
             <p>
-                Saya tersedia untuk proyek baru dan kolaborasi. Jika Anda ingin bekerja sama atau sekadar menyapa, silakan hubungi saya melalui email atau media sosial.
+                Saya terbuka untuk proyek baru dan kolaborasi. Jika Anda ingin bekerja sama atau sekadar menyapa, silakan hubungi saya melalui email, media sosial, atau formulir di bawah ini.
             </p>
-            <div class="contact-info">
-                <a href="mailto:fakhriadillah2@gmail.com">fakhriadillah2@gmail.com</a>
-                <a href="https://instagram.com/xavieer_2509" target="_blank">Instagram</a>
+            
+            <div class="contact-info-wrapper">
+                <div class="contact-info">
+                    <a href="mailto:fakhriadillah2@gmail.com">✉️ fakhriadillah2@gmail.com</a>
+                    <a href="https://instagram.com/xavieer_2509" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+                </div>
             </div>
             
             <form class="contact-form" action="https://formspree.io/f/mblynbpb" method="POST">
-                <h2>Send a Message</h2>
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-                <button type="submit">Send</button>
+                <fieldset>
+                    <legend>Kirim Pesan Langsung</legend>
+
+                    <div class="form-group">
+                        <label for="name">Nama Anda</label>
+                        <input type="text" id="name" name="name" placeholder="Contoh: Budi" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" name="email" placeholder="Contoh: email@anda.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subjek</label>
+                        <input type="text" id="subject" name="subject" placeholder="Contoh: Tawaran Kolaborasi Proyek" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Pesan Anda</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                    </div>
+                    
+                    <button type="submit">Kirim Pesan</button>
+                </fieldset>
             </form>
 
         </section>
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2025 Fakhri Adillah. All Rights Reserved.</p>
+        <p>&copy; 2025 Fakhri Adillah Alzaki. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
-</html>
+                            </html>
+                            
