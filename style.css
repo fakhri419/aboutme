@@ -1,22 +1,59 @@
-/* General Body Styles */
+/* 1. CSS Variables & Global Styles */
+:root {
+    --primary-bg: #ffffff;
+    --text-color: #333;
+    --text-color-light: #555;
+    --brand-color: #000;
+    --border-color: #eee;
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --transition-speed: 0.3s;
+}
+
+/* --- Dark Mode Auto-Sensing --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-bg: #121212;
+        --text-color: #e0e0e0;
+        --text-color-light: #aaa;
+        --brand-color: #fff;
+        --border-color: #333;
+        --header-bg: rgba(18, 18, 18, 0.85);
+    }
+}
+
+/* --- General Body Styles --- */
+html {
+    scroll-behavior: smooth; /* Membuat scroll halus saat klik anchor link */
+}
+
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
-    background-color: #ffffff;
-    color: #333;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-/* Header and Navigation */
+/* Memberi outline hanya saat navigasi dengan keyboard (aksesibilitas) */
+:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 2px;
+}
+
+
+/* 2. Header and Navigation */
 .main-header {
     padding: 20px 40px;
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--header-bg);
+    backdrop-filter: blur(5px); /* Efek blur pada background header */
     z-index: 1000;
     box-sizing: border-box;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
 }
 
 .header-content {
@@ -31,8 +68,9 @@ body {
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: var(--brand-color);
     letter-spacing: 2px;
+    transition: color var(--transition-speed);
 }
 
 .main-nav ul {
@@ -48,34 +86,99 @@ body {
 
 .main-nav a {
     text-decoration: none;
-    color: #555;
+    color: var(--text-color-light);
     font-size: 0.9em;
     padding: 5px 0;
-    transition: color 0.3s ease;
+    position: relative; /* Diperlukan untuk pseudo-element ::after */
+    transition: color var(--transition-speed);
 }
 
-.main-nav a:hover {
-    color: #000;
+/* Efek garis bawah saat hover */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--brand-color);
+    transform-origin: bottom right;
+    transition: transform var(--transition-speed) ease-out;
 }
 
-/* Photo Grid */
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--brand-color);
+    font-weight: bold;
+}
+
+
+/* 3. Photo Grid (dengan Interaktivitas) */
+.intro {
+    padding: 0 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
-    padding: 120px 40px 40px 40px; /* Padding top to avoid overlap with fixed header */
+    padding: 120px 40px 40px 40px;
     max-width: 1600px;
     margin: 0 auto;
 }
 
-.grid-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+.grid-item {
+    position: relative; /* Diperlukan untuk positioning figcaption */
+    overflow: hidden; /* Menyembunyikan bagian gambar yang membesar */
+    border-radius: 8px; /* Sudut yang lebih lembut */
+    background-color: #f0f0f0;
 }
 
-/* Footer */
+.grid-item img {
+    width: 100%;
+    height: 100%; /* Memastikan gambar mengisi area figure */
+    display: block;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease-in-out;
+}
+
+.grid-item:hover img {
+    transform: scale(1.05); /* Efek zoom pada gambar saat hover */
+}
+
+/* Styling untuk caption dari tag <figcaption> */
+.grid-item figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 30px 20px 15px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+    transform: translateY(100%); /* Sembunyikan caption di bawah */
+    opacity: 0;
+    transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+.grid-item:hover figcaption {
+    transform: translateY(0); /* Tampilkan caption saat hover */
+    opacity: 1;
+}
+
+
+/* 4. Footer */
 .main-footer {
     text-align: center;
     padding: 40px;
@@ -83,31 +186,57 @@ body {
     color: #888;
 }
 
-/* Mobile Responsiveness */
+.social-links a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color var(--transition-speed);
+}
+.social-links a:hover {
+    color: var(--brand-color);
+}
+
+
+/* 5. Mobile Responsiveness (dengan Animasi) */
 .menu-toggle {
-    display: none; /* Hidden on desktop */
+    display: none;
     background: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     padding: 8px 12px;
     cursor: pointer;
     font-size: 1em;
+    color: var(--text-color);
+    border-radius: 5px;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.menu-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--primary-bg);
 }
 
 @media (max-width: 768px) {
     .main-nav {
-        display: none; /* Hide nav by default on mobile */
+        display: block;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #fff;
-        flex-direction: column;
+        background-color: var(--primary-bg);
         text-align: center;
-        border-top: 1px solid #eee;
+        border-top: 1px solid var(--border-color);
+        
+        /* Pengaturan awal untuk animasi */
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform var(--transition-speed) ease-out, opacity var(--transition-speed) ease-out, visibility var(--transition-speed);
     }
 
     .main-nav.active {
-        display: flex; /* Show nav when active */
+        /* Status akhir saat menu aktif */
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
 
     .main-nav ul {
@@ -122,21 +251,22 @@ body {
     .main-nav a {
         display: block;
         padding: 15px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .main-nav a::after {
+        display: none; /* Nonaktifkan efek garis bawah di mobile */
     }
 
     .menu-toggle {
-        display: block; /* Show menu button on mobile */
+        display: block;
     }
 
     .photo-grid {
         padding: 100px 20px 20px 20px;
         gap: 10px;
     }
+    
+    .intro {
+        padding: 0 20px;
+    }
 }
-/* Tambahkan ini ke file style.css Anda */
-.main-nav a.active {
-    color: #000;
-    font-weight: bold;
-}
-
