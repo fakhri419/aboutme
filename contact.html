@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Fakhri Adillah</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header glass-effect">
+        <div class="header-content">
+            <a href="index.html" class="logo">FZ<span>.</span></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Journal</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="contact-section">
+        <div class="container">
+            
+            <div class="contact-header scroll-animate">
+                <h1>Let's Talk</h1>
+                <p>Punya pertanyaan, tawaran kolaborasi, atau sekadar ingin menyapa? Kirimkan pesan di bawah ini.</p>
+            </div>
+
+            <div class="contact-wrapper scroll-animate">
+                
+                <div class="contact-info">
+                    <div class="info-box">
+                        <h3>Email</h3>
+                        <a href="mailto:fakhriadillah2@gmail.com" class="contact-link">fakhriadillah2@gmail.com</a>
+                    </div>
+                    <div class="info-box">
+                        <h3>Instagram</h3>
+                        <a href="https://instagram.com/xavieer_2509" target="_blank" class="contact-link">@xavieer_2509</a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form action="https://formspree.io/f/mblynbpb" method="POST" class="modern-form">
+                        
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" required placeholder=" ">
+                            <label for="name">Nama Lengkap</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" required placeholder=" ">
+                            <label for="email">Email Address</label>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" id="message" rows="5" required placeholder=" "></textarea>
+                            <label for="message">Pesan Anda</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Kirim Pesan</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Fakhri Adillah Alzaki.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
